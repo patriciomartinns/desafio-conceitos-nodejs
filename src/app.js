@@ -36,9 +36,9 @@ app.put("/repositories/:id", (request, response) => {
 
   const findRepositoryIndex = repositories.findIndex(repository => repository.id === id)
 
-  if(findRepositoryIndex === -1) (
-    response.status(400).json({ error: 'Repository dont not exist'})
-  )
+  if(findRepositoryIndex === -1) {
+    return response.status(400).json({ error: 'Repository dont not exist'})
+  }
   
   const repository = {
     id,
@@ -71,9 +71,9 @@ app.post("/repositories/:id/like", (request, response) => {
   const { id } = request.params
   const findRepositoryIndex = repositories.findIndex(repository => repository.id === id)
 
-  if(findRepositoryIndex === -1) (
-    response.status(400).json({ error: 'Repository dont not exist'})
-  )
+  if(findRepositoryIndex === -1) {
+     return response.status(400).json({ error: 'Repository dont not exist'})
+  }
 
   repositories[findRepositoryIndex].likes++
 
